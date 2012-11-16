@@ -106,23 +106,11 @@ class SeleniumFactory:
         if 'SELENIUM_DRIVER' in os.environ and 'SELENIUM_HOST' in os.environ and 'SELENIUM_PORT' in os.environ:
             parse = ParseSauceURL(os.environ["SELENIUM_DRIVER"])
 
+            browser = os.environ["SELENIUM_BROWSER"]
             desired_capabilities = {}
-            if parse.getBrowser() == 'android':
-                desired_capabilities = webdriver.DesiredCapabilities.ANDROID
-            elif parse.getBrowser() == 'googlechrome':
-                desired_capabilities = webdriver.DesiredCapabilities.CHROME
-            elif parse.getBrowser() == 'firefox':
-                desired_capabilities = webdriver.DesiredCapabilities.FIREFOX
-            elif parse.getBrowser() == 'htmlunit':
-                desired_capabilities = webdriver.DesiredCapabilities.HTMLUNIT
-            elif parse.getBrowser() == 'iexplorer':
-                desired_capabilities = webdriver.DesiredCapabilities.INTERNETEXPLORER
-            elif parse.getBrowser() == 'iphone':
-                desired_capabilities = webdriver.DesiredCapabilities.IPHONE
-            else:
-                desired_capabilities = webdriver.DesiredCapabilities.FIREFOX
 
-            desired_capabilities['version'] = parse.getBrowserVersion()
+            desired_capabilities['browser'] = browser
+            desired_capabilities['version'] = os.environ["SELENIUM_VERSION"]
 
             if 'SELENIUM_PLATFORM' in os.environ:
                 desired_capabilities['platform'] = os.environ['SELENIUM_PLATFORM']
