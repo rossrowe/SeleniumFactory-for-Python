@@ -127,8 +127,7 @@ class SeleniumFactory:
 
             desired_capabilities['name'] = parse.getJobName()
 
-            command_executor="http://%s:%s@%s:%s/wd/hub"%(parse.getUserName(), parse.getAccessKey(
-            ), os.environ['SELENIUM_HOST'], os.environ['SELENIUM_PORT'])
+            command_executor="http://%s:%s@%s:%s/wd/hub"%(os.environ['SAUCE_USER_NAME'], os.environ['SAUCE_API_KEY'], os.environ['SELENIUM_HOST'], os.environ['SELENIUM_PORT'])
 
             #make sure the test doesn't run forever if if the test crashes
             if parse.getMaxDuration() != 0:
