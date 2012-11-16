@@ -109,7 +109,7 @@ class SeleniumFactory:
             browser = os.environ["SELENIUM_BROWSER"]
             desired_capabilities = {}
 
-            desired_capabilities['browser'] = browser
+            desired_capabilities['browserName'] = browser
             desired_capabilities['version'] = os.environ["SELENIUM_VERSION"]
 
             if 'SELENIUM_PLATFORM' in os.environ:
