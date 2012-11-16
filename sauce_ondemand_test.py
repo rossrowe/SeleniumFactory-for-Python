@@ -37,23 +37,5 @@ class testSauceWrappers(unittest.TestCase):
         assert not data['passed']
         browser.quit()
 
-    def test_selenium_success(self):
-        browser = SeleniumFactory().create()
-        browser.open("http://www.amazon.com")
-        assert "Amazon.com" in browser.get_title()
-        browser.job_passed()
-        data = self.retrieve_job_details(browser)
-        assert data['passed']
-        browser.stop()
-
-    def test_selenium_failed(self):
-        browser = SeleniumFactory().create()
-        browser.open("http://www.amazon.com")
-        assert "Amazon.com" in browser.get_title()
-        browser.job_failed()
-        data = self.retrieve_job_details(browser)
-        assert not data['passed']
-        browser.stop()
-
 if __name__ == "__main__":
     unittest.main()

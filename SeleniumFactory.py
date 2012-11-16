@@ -15,8 +15,8 @@ the Sauce job.
 class Wrapper:
     def __init__(self, selenium, parse):
         self.__dict__['selenium'] = selenium
-        self.username = parse.getUserName()
-        self.accessKey = parse.getAccessKey()
+        self.username = os.environ['SAUCE_USER_NAME']
+        self.accessKey = os.environ['SAUCE_API_KEY']
         self.jobName = parse.getJobName()
 
     def id(self):
