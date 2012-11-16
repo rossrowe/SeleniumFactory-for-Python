@@ -12,7 +12,7 @@ class testSauceWrappers(unittest.TestCase):
 
 
     def retrieve_job_details(self, browser):
-        sauceRest = SauceRest(self.username, self.access_key)
+        sauceRest = SauceRest(os.environ['SAUCE_USER_NAME'], os.environ['SAUCE_API_KEY'])
         result = sauceRest.get(browser.id())
         data = json.loads(result)
         return data
